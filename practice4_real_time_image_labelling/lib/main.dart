@@ -60,13 +60,13 @@ class _CameraScreenState extends State<CameraScreen> {
   doImageLabeling() async {
     InputImage inputImage = getInputImage();
     final List<ImageLabel> labels = await imageLabeler.processImage(inputImage);
-    
+
     result = "";
     for (ImageLabel label in labels) {
       final String text = label.label;
       final int index = label.index;
       final double confidence = label.confidence;
-      result += text+"  "+confidence.toStringAsFixed(2)+"\n";
+      result += "$text  ${confidence.toStringAsFixed(2)}\n";
     }
     setState(() {
       result;
